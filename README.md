@@ -6,7 +6,7 @@
 
 Project Page: [https://B-LoRA.github.io](https://B-LoRA.github.io/B-LoRA/))
 
-![Teaser Image](images/example_image.png)
+![Teaser Image](docs/teaser.pdf)
 
 This repository contains the official implementation of the B-LoRA method, which enables implicit style-content separation of a single input image for various image stylization tasks. B-LoRA leverages the power of Stable Diffusion XL (SDXL) and Low-Rank Adaptation (LoRA) to disentangle the style and content components of an image, facilitating applications such as image style transfer, text-based image stylization, and consistent style generation.
 
