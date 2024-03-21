@@ -2,7 +2,7 @@
 
 [Paper on arXiv](https://arxiv.org/abs/your-paper-id)
 
-Project Page: [https://B-LoRA.github.io](https://B-LoRA.github.io/B-LoRA/))
+Project Page: [https://B-LoRA.github.io](https://B-LoRA.github.io/B-LoRA/)
 
 ![Teaser Image](docs/teaser_blora.png)
 
