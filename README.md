@@ -1,6 +1,6 @@
 # Implicit Style-Content Separation using B-LoRA
 
-[Paper on arXiv](https://arxiv.org/abs/your-paper-id)
+[Paper on arXiv](https://arxiv.org/abs/2403.14572)
 
 Project Page: [https://B-LoRA.github.io](https://B-LoRA.github.io/B-LoRA/)
 
