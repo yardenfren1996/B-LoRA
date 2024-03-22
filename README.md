@@ -15,11 +15,13 @@ This repository contains the official implementation of the B-LoRA method, which
 If you use B-LoRA in your research, please cite the following paper:
 
 ```bibtex
-@inproceedings{b-lora2024,
-  title={Implicit Style-Content Separation using B-LoRA},
-  author={Anonymous},
-  booktitle={ECCV},
-  year={2024}
+@misc{frenkel2024implicit,
+      title={Implicit Style-Content Separation using B-LoRA}, 
+      author={Yarden Frenkel and Yael Vinker and Ariel Shamir and Daniel Cohen-Or},
+      year={2024},
+      eprint={2403.14572},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
 }
 ```
 
