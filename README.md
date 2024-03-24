@@ -19,7 +19,7 @@ This repository contains the official implementation of the B-LoRA method, which
 
 1. Clone this repository:
    ```
-   git clone git@github.com:yardenfren1996/B-LoRA.git
+   git clone https://github.com/yardenfren1996/B-LoRA.git
    cd B-LoRA
    ```
 
@@ -55,9 +55,10 @@ This repository contains the official implementation of the B-LoRA method, which
 This will optimize the B-LoRA weights for the content and style and store them in  `output_dir`.
 Parameters that need to replace  `instance_data_dir`, `output_dir`, `instance_prompt` (in our paper we use `A [v]`)
 
-![Apps Image](docs/apps_method1.png)
+
 
 2. **Inference**
+   ![Apps Image](docs/apps_method1.png)
 
    For image stylization based on a reference style image (1), run:
    ```
