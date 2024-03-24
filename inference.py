@@ -21,10 +21,10 @@ def parse_args():
         "--style_B_LoRA", type=str, default=None, help="path for the style B-LoRA"
     )
     parser.add_argument(
-        "--content_alpha", type=float, default=1, help="alpha parameter to scale the content B-LoRA weights"
+        "--content_alpha", type=float, default=1., help="alpha parameter to scale the content B-LoRA weights"
     )
     parser.add_argument(
-        "--style_alpha", type=float, default=1.05, help="alpha parameter to scale the style B-LoRA weights"
+        "--style_alpha", type=float, default=1., help="alpha parameter to scale the style B-LoRA weights"
     )
     parser.add_argument(
         "--num_images_per_prompt", type=int, default=4, help="number of images per prompt"
