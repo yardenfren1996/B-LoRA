@@ -56,9 +56,9 @@ This will optimize the B-LoRA weights for the content and style and store them i
 Parameters that need to replace  `instance_data_dir`, `output_dir`, `instance_prompt` (in our paper we use `A [v]`)
 
 
+![Apps Image](docs/apps_method1.png)
 
-2. **Inference**
-   ![Apps Image](docs/apps_method1.png)
+2. **Inference**   
 
    For image stylization based on a reference style image (1), run:
    ```
