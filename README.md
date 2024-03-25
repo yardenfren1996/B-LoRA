@@ -1,8 +1,8 @@
 # Implicit Style-Content Separation using B-LoRA
 
-[Paper on arXiv](https://arxiv.org/abs/2403.14572)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/yardenfren1996/B-LoRA/blob/main/B_LoRA_inference.ipynb) [![arXiv](https://img.shields.io/badge/arXiv-2108.00946-b31b1b.svg)](https://arxiv.org/abs/2403.14572)
 
-Project Page: [https://B-LoRA.github.io](https://B-LoRA.github.io/B-LoRA/)
+[[Project Website](https://B-LoRA.github.io/B-LoRA/)]
 
 ![Teaser Image](docs/teaser_blora.png)
 
