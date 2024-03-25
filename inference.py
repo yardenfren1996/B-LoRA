@@ -1,7 +1,7 @@
 import argparse
 
 import torch
-from diffusers import StableDiffusionXLPipeline
+from diffusers import StableDiffusionXLPipeline, AutoencoderKL
 
 from blora_utils import BLOCKS, filter_lora, scale_lora
 
