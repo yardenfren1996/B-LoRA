@@ -34,8 +34,9 @@ def parse_args():
 
 if __name__ == '__main__':
     args = parse_args()
+    vae = AutoencoderKL.from_pretrained("madebyollin/sdxl-vae-fp16-fix", torch_dtype=torch.float16)
     pipeline = StableDiffusionXLPipeline.from_pretrained("stabilityai/stable-diffusion-xl-base-1.0",
-                                                         cache_dir="../ziplora-pytorch/cache",
+                                                         vae=vae
                                                          torch_dtype=torch.float16).to("cuda")
 
     # Get Content B-LoRA SD
