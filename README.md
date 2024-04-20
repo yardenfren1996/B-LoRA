@@ -25,6 +25,7 @@ This repository contains the official implementation of the B-LoRA method, which
    ```
    pip install -r requirements.txt
    ```
+   (for windows [here](https://github.com/yardenfren1996/B-LoRA/issues/6))
 
 ### Usage
 
