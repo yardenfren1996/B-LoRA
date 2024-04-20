@@ -25,7 +25,7 @@ This repository contains the official implementation of the B-LoRA method, which
    ```
    pip install -r requirements.txt
    ```
-   (for windows [here](https://github.com/yardenfren1996/B-LoRA/issues/6))
+   (for windows 10 [here](https://github.com/yardenfren1996/B-LoRA/issues/6))
 
 ### Usage
 
@@ -82,6 +82,8 @@ Parameters that need to replace  `instance_data_dir`, `output_dir`, `instance_pr
    Several additional parameters that you can set in the `inference.py` file include:
    1. `--content_alpha`, `--style_alpha` for controlling the strength of the adapters.
    2. `--num_images_per_prompt` for specifying the number of output images.
+
+   (For a111 and comfy see this [issue](https://github.com/yardenfren1996/B-LoRA/issues/7))
 
 ## Citation
 
