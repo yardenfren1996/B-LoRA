@@ -6,6 +6,45 @@ from diffusers import StableDiffusionXLPipeline, AutoencoderKL
 from blora_utils import BLOCKS, filter_lora, scale_lora
 
 
+class SinkhornOTAttnProcessor:
+    """Attention processor using Sinkhorn Optimal Transport."""
+
+    def __init__(self, n_iters: int = 20, eps: float = 1e-3):
+        self.n_iters = n_iters
+        self.eps = eps
+
+    def _sinkhorn(self, log_scores):
+        for _ in range(self.n_iters):
+            log_scores = log_scores - torch.logsumexp(log_scores, dim=-1, keepdim=True)
+            log_scores = log_scores - torch.logsumexp(log_scores, dim=-2, keepdim=True)
+        return log_scores.exp()
+
+    def __call__(self, attn, hidden_states, encoder_hidden_states=None, attention_mask=None, **kwargs):
+        residual = hidden_states
+        if encoder_hidden_states is None:
+            encoder_hidden_states = hidden_states
+
+        query = attn.to_q(hidden_states)
+        key = attn.to_k(encoder_hidden_states)
+        value = attn.to_v(encoder_hidden_states)
+
+        query = attn.head_to_batch_dim(query)
+        key = attn.head_to_batch_dim(key)
+        value = attn.head_to_batch_dim(value)
+
+        attn_scores = torch.bmm(query, key.transpose(-1, -2)) * attn.scale
+        if attention_mask is not None:
+            attn_scores = attn_scores + attention_mask
+
+        attn_probs = self._sinkhorn(attn_scores)
+
+        hidden_states = torch.bmm(attn_probs, value)
+        hidden_states = attn.batch_to_head_dim(hidden_states)
+        hidden_states = attn.to_out[0](hidden_states)
+        hidden_states = attn.to_out[1](hidden_states)
+        return hidden_states + residual
+
+
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -60,6 +99,15 @@ if __name__ == '__main__':
 
     # Load
     pipeline.load_lora_into_unet(res_lora, None, pipeline.unet)
+
+    # Replace attention processors with Sinkhorn OT
+    OT_BLOCKS = ['up_blocks.0.attentions.0', 'up_blocks.0.attentions.1']
+    for attn_processor_name, _ in pipeline.unet.attn_processors.items():
+        if any(attn_processor_name.startswith(b) for b in OT_BLOCKS):
+            attn_module = pipeline.unet
+            for n in attn_processor_name.split('.')[:-1]:
+                attn_module = getattr(attn_module, n)
+            attn_module.set_processor(SinkhornOTAttnProcessor())
 
     # Generate
     images = pipeline(args.prompt, num_images_per_prompt=args.num_images_per_prompt).images
